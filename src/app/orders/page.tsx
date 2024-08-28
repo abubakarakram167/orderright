@@ -7,7 +7,7 @@ const OrdersPage = () => {
 	const { isPending, error, data } = useQuery({
 		queryKey: ["orders"],
 		queryFn: () =>
-			axios.get("http://localhost:3000/api/orders").then((res) => res.data),
+			fetch("http://localhost:3000/api/orders").then((res) => res.json()),
 	});
 	console.log("the error", error);
 	if (isPending) return "Loading...";
