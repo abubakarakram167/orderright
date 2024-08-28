@@ -15,7 +15,6 @@ const getData = async () => {
 
 const MenuPage = async () => {
 	const menu: Menu = await getData();
-	console.log("in page the data", menu);
 
 	return (
 		<div className="p-4 lg:px-20 xl:px-40 h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] flex flex-col md:flex-row items-center">

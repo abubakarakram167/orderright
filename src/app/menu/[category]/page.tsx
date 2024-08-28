@@ -18,7 +18,6 @@ const CategoryPage = async ({ params }: Props) => {
 	console.log("the params", params);
 
 	const products: Products = await getSpecifcProducts(params.category);
-	console.log("in page the data", products);
 
 	return (
 		<div className="flex flex-wrap text-red-500">

@@ -15,7 +15,6 @@ const getFeaturedProducts = async () => {
 
 const Featured = async () => {
 	const products: Products = await getFeaturedProducts();
-	console.log("in page the data", products);
 
 	return (
 		<div className="w-screen overflow-x-scroll text-red-500">
