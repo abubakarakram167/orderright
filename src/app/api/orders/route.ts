@@ -5,7 +5,7 @@ import { auth } from "@/auth";
 // Fetch all Orders
 export const GET = async (req: NextRequest) => {
 	const session = await auth();
-	console.log("in server::", session);
+
 	if (session) {
 		if (session.user.isAdmin) {
 			const orders = await prisma.order.findMany();
