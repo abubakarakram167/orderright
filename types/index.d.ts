@@ -39,4 +39,15 @@ declare type Props = {
 	params: { category: String };
 };
 
+declare type CartType = {
+	products: CartItemType[];
+	totalItems: number;
+	totalPrice: number;
+};
+
+type ActionTypes = {
+	addToCart: (item: CartItemType) => void;
+	removeFromCart: (item: CartItemType) => void;
+};
+
 declare type Products = Product[];
