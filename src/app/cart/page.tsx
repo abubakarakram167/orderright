@@ -1,11 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import { useCartStore } from "utils/store";
 
 const CartPage = () => {
 	const { products, totalItems, totalPrice, removeFromCart } = useCartStore();
+
+	useEffect(() => {
+		useCartStore.persist.rehydrate();
+	}, []);
 
 	return (
 		<div className="h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] flex flex-col text-red-500 lg:flex-row">
@@ -24,7 +28,12 @@ const CartPage = () => {
 							<span>{product.optionTitle}</span>
 						</div>
 						<h2 className="font-bold">${product.price}</h2>
-						<span className="cursor-pointer">X</span>
+						<span
+							className="cursor-pointer"
+							onClick={() => removeFromCart(product)}
+						>
+							X
+						</span>
 					</div>
 				))}
 			</div>
