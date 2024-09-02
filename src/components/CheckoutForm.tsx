@@ -4,6 +4,7 @@ import {
 	useStripe,
 	useElements,
 } from "@stripe/react-stripe-js";
+import AddressForm from "./AddressForm";
 
 export default function CheckoutForm() {
 	const stripe = useStripe();
@@ -47,39 +48,37 @@ export default function CheckoutForm() {
 
 	return (
 		<>
-			<form id="payment-form" onSubmit={handleSubmit}>
+			<form
+				id="payment-form"
+				onSubmit={handleSubmit}
+				className="min-h-[calc(100vh-6rem)] md:min-h-[calc(100vh-15rem)] p-4 lg:px-20 xl:px-40 flex flex-col gap-8"
+			>
 				<PaymentElement
 					id="payment-element"
 					options={{
 						layout: "tabs",
 					}}
 				/>
-				<button disabled={isLoading || !stripe || !elements} id="submit">
-					<span id="button-text">
-						{isLoading ? (
-							<div className="spinner" id="spinner"></div>
-						) : (
-							"Pay now"
-						)}
-					</span>
-				</button>
+				<AddressForm />
+				<div className="flex flex-row justify-center sm:justify-start">
+					<button
+						disabled={isLoading || !stripe || !elements}
+						className="bg-red-500 text-white p-1 rounded-md w-28"
+						id="submit"
+					>
+						<span id="button-text">
+							{isLoading ? (
+								<div className="spinner" id="spinner"></div>
+							) : (
+								"Pay now"
+							)}
+						</span>
+					</button>
+				</div>
+
 				{/* Show any error or success messages */}
 				{message && <div id="payment-message">{message}</div>}
 			</form>
-			{/* [DEV]: For demo purposes only, display dynamic payment methods annotation and integration checker */}
-			<div id="dpm-annotation">
-				<p>
-					Payment methods are dynamically displayed based on customer location,
-					order amount, and currency.&nbsp;
-					<a
-						target="_blank"
-						rel="noopener noreferrer"
-						id="dpm-integration-checker"
-					>
-						Preview payment methods by transaction
-					</a>
-				</p>
-			</div>
 		</>
 	);
 }

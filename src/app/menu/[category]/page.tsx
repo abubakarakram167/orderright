@@ -15,8 +15,6 @@ const getSpecifcProducts = async (params: String) => {
 };
 
 const CategoryPage = async ({ params }: Props) => {
-	console.log("the params", params);
-
 	const products: Products = await getSpecifcProducts(params.category);
 
 	return (
