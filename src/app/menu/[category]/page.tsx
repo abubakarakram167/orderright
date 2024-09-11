@@ -2,9 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Products } from "types";
+import { serverUrl } from "utils/api";
 
 const getSpecifcProducts = async (params: String) => {
-	const res = await fetch(`http://localhost:3000/api/products?cat=${params}`, {
+	const res = await fetch(`${serverUrl}/api/products?cat=${params}`, {
 		cache: "no-store",
 	});
 

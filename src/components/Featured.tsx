@@ -1,9 +1,10 @@
 import Image from "next/image";
 import React from "react";
 import { Products } from "types";
+import { serverUrl } from "utils/api";
 
 const getFeaturedProducts = async () => {
-	const res = await fetch("http://localhost:3000/api/products", {
+	const res = await fetch(`${serverUrl}/api/products`, {
 		cache: "no-store",
 	});
 

@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { serverUrl } from "utils/api";
 
 type Inputs = {
 	title: string;
@@ -91,7 +92,7 @@ const AddPage = () => {
 
 		try {
 			const url = await upload();
-			const res = await fetch("http://localhost:3000/api/products", {
+			const res = await fetch(`${serverUrl}/api/products`, {
 				method: "POST",
 				body: JSON.stringify({
 					img: url,

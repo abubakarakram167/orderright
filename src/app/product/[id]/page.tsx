@@ -3,9 +3,10 @@ import Price from "@/components/Price";
 import Image from "next/image";
 import React from "react";
 import { Product } from "types";
+import { serverUrl } from "utils/api";
 
 const getData = async (id: string) => {
-	const res = await fetch(`http://localhost:3000/api/products/${id}`, {
+	const res = await fetch(`${serverUrl}/api/products/${id}`, {
 		cache: "no-store",
 	});
 

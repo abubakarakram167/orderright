@@ -1,11 +1,16 @@
 import Link from "next/link";
 import React from "react";
 import { Menu } from "types";
+import { serverUrl } from "utils/api";
+
+console.log("the server url", serverUrl);
 
 const getData = async () => {
-	const res = await fetch("http://localhost:3000/api/categories", {
+	let res = await fetch(`${serverUrl}/api/categories`, {
 		cache: "no-store",
 	});
+
+	console.log("the response", res);
 
 	if (!res.ok) {
 		throw new Error("Failed!");

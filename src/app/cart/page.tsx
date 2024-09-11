@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
+import { serverUrl } from "utils/api";
 import { useCartStore } from "utils/store";
 
 const CartPage = () => {
@@ -20,7 +21,7 @@ const CartPage = () => {
 			router.push("/");
 		} else {
 			try {
-				const res = await fetch("http://localhost:3000/api/orders", {
+				const res = await fetch(`${serverUrl}/api/orders`, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify({

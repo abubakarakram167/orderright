@@ -5,6 +5,7 @@ import { OrderType } from "types";
 import Image from "next/image";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import { serverUrl } from "utils/api";
 
 const OrdersPage = () => {
 	const { data: session, status } = useSession(); //authjs client session data retrieval
@@ -12,13 +13,12 @@ const OrdersPage = () => {
 
 	const { isPending, error, data } = useQuery({
 		queryKey: ["orders"],
-		queryFn: () =>
-			fetch("http://localhost:3000/api/orders").then((res) => res.json()),
+		queryFn: () => fetch(`${serverUrl}/api/orders`).then((res) => res.json()),
 	});
 
 	const mutation = useMutation({
 		mutationFn: ({ id, status }: { id: string; status: string }) => {
-			return fetch(`http://localhost:3000/api/orders/${id}`, {
+			return fetch(`${serverUrl}/api/orders/${id}`, {
 				method: "PUT",
 				headers: {
 					"Content-Type": "application/json",

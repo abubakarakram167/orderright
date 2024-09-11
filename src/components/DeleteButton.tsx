@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import { serverUrl } from "utils/api";
 
 const DeleteButton = ({ id }: { id: string }) => {
 	const { data: session, status } = useSession();
@@ -18,7 +19,7 @@ const DeleteButton = ({ id }: { id: string }) => {
 	}
 
 	const handleDelete = async () => {
-		const res = await fetch(`http://localhost:3000/api/products/${id}`, {
+		const res = await fetch(`${serverUrl}/api/products/${id}`, {
 			method: "DELETE",
 		});
 		console.log("the response ", res);

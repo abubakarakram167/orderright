@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { StripeElementsOptions, loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "@/components/CheckoutForm";
+import { serverUrl } from "utils/api";
 
 const stripePromise = loadStripe(
 	process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
@@ -15,12 +16,9 @@ const Page = ({ params }: { params: { id: string } }) => {
 	useEffect(() => {
 		const makeRequest = async () => {
 			try {
-				const res = await fetch(
-					`http://localhost:3000/api/create-intent/${id}`,
-					{
-						method: "POST",
-					}
-				);
+				const res = await fetch(`${serverUrl}/api/create-intent/${id}`, {
+					method: "POST",
+				});
 
 				const data = await res.json();
 				console.log("the data :", data);
