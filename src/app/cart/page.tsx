@@ -45,7 +45,10 @@ const CartPage = () => {
 				{/* SINGLE ITEM */}
 
 				{products.map((product) => (
-					<div className="flex items-center justify-between mb-4">
+					<div
+						key={product.id}
+						className="flex items-center justify-between mb-4"
+					>
 						{product.img && (
 							<Image src={product.img} alt="" width={100} height={100} />
 						)}

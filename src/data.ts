@@ -1,3 +1,5 @@
+import { Product, Products } from "types";
+
 export const featuredProducts: Products = [
 	{
 		id: 1,

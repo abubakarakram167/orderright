@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Products } from "types";
 
 const getSpecifcProducts = async (params: String) => {
 	const res = await fetch(`http://localhost:3000/api/products?cat=${params}`, {
@@ -12,6 +13,10 @@ const getSpecifcProducts = async (params: String) => {
 	}
 
 	return res.json();
+};
+
+type Props = {
+	params: { category: string };
 };
 
 const CategoryPage = async ({ params }: Props) => {
