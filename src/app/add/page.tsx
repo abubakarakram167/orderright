@@ -45,7 +45,9 @@ const AddPage = () => {
 	}
 
 	const handleChange = (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+		e: React.ChangeEvent<
+			HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+		>
 	) => {
 		setInputs((prev) => {
 			return { ...prev, [e.target.name]: e.target.value };
@@ -159,13 +161,17 @@ const AddPage = () => {
 				</div>
 				<div className="w-full flex flex-col gap-2 ">
 					<label className="text-sm">Category</label>
-					<input
+					<select
 						className="ring-1 ring-red-200 p-4 rounded-sm placeholder:text-red-200 outline-none"
-						type="text"
 						placeholder="pizzas"
 						name="catSlug"
 						onChange={handleChange}
-					/>
+						defaultValue={"pizzas"}
+					>
+						<option value="pizzas">pizzas</option>
+						<option value="pastas">pastas</option>
+						<option value="burgers">burgers</option>
+					</select>
 				</div>
 				<div className="w-full flex flex-col gap-2">
 					<label className="text-sm">Options</label>
