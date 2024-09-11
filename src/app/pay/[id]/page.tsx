@@ -8,7 +8,7 @@ const stripePromise = loadStripe(
 	process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
 );
 
-const page = ({ params }: { params: { id: string } }) => {
+const Page = ({ params }: { params: { id: string } }) => {
 	const [clientSecret, setClientSecret] = useState("");
 	const { id } = params;
 
@@ -50,4 +50,4 @@ const page = ({ params }: { params: { id: string } }) => {
 	);
 };
 
-export default page;
+export default Page;
