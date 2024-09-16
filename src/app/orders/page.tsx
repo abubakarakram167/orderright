@@ -6,6 +6,7 @@ import Image from "next/image";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { serverUrl } from "utils/api";
+import moment from "moment";
 
 const OrdersPage = () => {
 	const { data: session, status } = useSession(); //authjs client session data retrieval
@@ -65,10 +66,12 @@ const OrdersPage = () => {
 								key={order.id}
 							>
 								<td className="hidden md:block py-6 px-2">{order.id}</td>
-								<td className="py-6 px-2">19.07.2023</td>
-								<td className="py-6 px-2">89.90</td>
+								<td className="py-6 px-2">
+									{moment(order.createdAt).format("DD-MM-YYYY")}
+								</td>
+								<td className="py-6 px-2">{order.price}</td>
 								<td className="hidden md:block py-6 px-2">
-									Big Burger Menu (2), Veggie Pizza (2), Coca Cola 1L (2)
+									{order?.products?.map((product) => product.title)}
 								</td>
 								{session?.user.isAdmin ? (
 									<td>
