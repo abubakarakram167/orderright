@@ -15,7 +15,7 @@ const OrdersPage = () => {
 		queryKey: ["orders"],
 		queryFn: () => fetch(`${serverUrl}/api/orders`).then((res) => res.json()),
 	});
-
+	console.log("the data", data);
 	const mutation = useMutation({
 		mutationFn: ({ id, status }: { id: string; status: string }) => {
 			return fetch(`${serverUrl}/api/orders/${id}`, {
@@ -44,7 +44,7 @@ const OrdersPage = () => {
 	console.log("the data", data);
 
 	return (
-		<div className="p-4 lg:px-20 xl:px-40">
+		<div className="p-4 lg:px-20 xl:px-40  h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)]">
 			<table className="w-full border-separate border-spacing-3">
 				<thead>
 					<tr className="text-left">
@@ -56,7 +56,7 @@ const OrdersPage = () => {
 					</tr>
 				</thead>
 				<tbody>
-					{data.map((order: OrderType) => {
+					{data?.map((order: OrderType) => {
 						return (
 							<tr
 								className={`text-sm md:text-base ${

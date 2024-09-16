@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { Products } from "types";
 import { serverUrl } from "utils/api";
@@ -21,6 +22,11 @@ const Featured = async () => {
 	return (
 		<div className="w-screen overflow-x-scroll text-red-500">
 			{/* WRAPPER */}
+			<div className="flex flex-row md:ml-12 mt-5 mb-5 justify-center md:justify-start ">
+				<Image width={30} height={10} src="/flame.png" alt="" />
+				<p className="text-4xl ml-2">Popular</p>
+			</div>
+
 			<div className="w-max flex">
 				{/* SINGLE ITEM */}
 				{products.map((item) => (
@@ -41,9 +47,13 @@ const Featured = async () => {
 							</h1>
 							<p className="p-4 2xl:p-8">{item.desc}</p>
 							<span className="text-xl font-bold">${item.price}</span>
-							<button className="bg-red-500 text-white p-2 rounded-md">
+
+							<Link
+								href={`/product/${item.id}`}
+								className="bg-red-500 text-white p-2 rounded-md"
+							>
 								Add to Cart
-							</button>
+							</Link>
 						</div>
 					</div>
 				))}

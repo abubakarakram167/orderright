@@ -24,7 +24,7 @@ const CategoryPage = async ({ params }: Props) => {
 	const products: Products = await getSpecifcProducts(params.category);
 
 	return (
-		<div className="flex flex-wrap text-red-500">
+		<div className="flex flex-wrap text-red-500  h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)]">
 			{products.map((item) => (
 				<Link
 					className="w-full h-[60vh] border-r-2 border-b-2 border-red-500 sm:w-1/2 lg:w-1/3 p-4 flex flex-col justify-between group odd:bg-fuchsia-50"

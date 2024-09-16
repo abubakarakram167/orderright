@@ -48,6 +48,7 @@ declare type CartType = {
 type ActionTypes = {
 	addToCart: (item: CartItemType) => void;
 	removeFromCart: (item: CartItemType) => void;
+	makeCartEmpty: () => void;
 };
 
 declare type Products = Product[];

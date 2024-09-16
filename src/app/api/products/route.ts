@@ -23,6 +23,7 @@ export const GET = async (req: NextRequest) => {
 export const POST = async (req: NextRequest) => {
 	try {
 		const body = await req.json();
+		console.log("the product body", body);
 		const product = await prisma.product.create({
 			data: body,
 		});

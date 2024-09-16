@@ -3,11 +3,13 @@ import { useRouter, useSearchParams } from "next/navigation";
 import React, { Suspense, useEffect } from "react";
 import ConfettiExplosion from "react-confetti-explosion";
 import { serverUrl } from "utils/api";
+import { useCartStore } from "utils/store";
 
 const SuccessPage = () => {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const payment_intent = searchParams.get("payment_intent");
+	const { makeCartEmpty } = useCartStore();
 
 	useEffect(() => {
 		const makeRequest = async () => {
@@ -15,9 +17,10 @@ const SuccessPage = () => {
 				await fetch(`${serverUrl}/api/confirm/${payment_intent}`, {
 					method: "PUT",
 				});
+				makeCartEmpty(); // Make cart empty after successfull Order Done!
 				setTimeout(() => {
 					router.push("/orders");
-				}, 5000);
+				}, 3000);
 			} catch (err) {
 				console.log(err);
 			}

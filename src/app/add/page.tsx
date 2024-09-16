@@ -24,7 +24,7 @@ const AddPage = () => {
 		title: "",
 		desc: "",
 		price: 0,
-		catSlug: "",
+		catSlug: "pizzas",
 	});
 
 	const [option, setOption] = useState<Option>({

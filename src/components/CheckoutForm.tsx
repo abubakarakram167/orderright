@@ -5,6 +5,7 @@ import {
 	useElements,
 } from "@stripe/react-stripe-js";
 import AddressForm from "./AddressForm";
+import { serverUrl } from "utils/api";
 
 export default function CheckoutForm() {
 	const stripe = useStripe();
@@ -28,7 +29,7 @@ export default function CheckoutForm() {
 			elements,
 			confirmParams: {
 				// Make sure to change this to your payment completion page
-				return_url: "http://localhost:3000/success",
+				return_url: `${serverUrl}/success`,
 			},
 		});
 
